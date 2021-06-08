@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<style>
+		
+		.m-t-30{
+			margin-top: 30px;
+		}
+
+	</style> 
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title> Data Table </title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+	<div class="container ">
+		<div class="row "> 
+			<div class="col-12 d-flex m-t-30" >
+				<div class="col-4">
+					<h2 class="userList">Total Student List</h2>
+				</div>
+				<div class="col-3">
+					<button id="fetchBtn" type="button" class="btn waves-effect waves-light btn-outline-info w-100 ">ADD STUDENT</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="row  m-t-30 "> 
+			<div class="table-responsive">
+				<table class="table table-striped">
+					<thead class="bg-info text-white">
+						<tr>
+							<th>Student ID</th>
+							<th>Name</th>
+							<th>Gender </th>
+							<th>Mobile</th>
+							<th>Address</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr id="row1">
+							<td id="id_row1">2021040001</td>
+							<td id="name_row1">Afsana Akter</td>
+							<td id="gender_row1">Female</td>
+							<td id="phone_row1">01798412366</td>
+							<td id="address_row1">Dhanmondi, Dhaka</td>
+							<td>
+								<i title="Delete" class="deleteData fa fa-trash fa-lg btn btn-outline-danger " data-target="#deleteModal" ></i> &emsp;
+
+								<i title="Edit" class="editData fa fa-edit fa-lg btn btn-outline-info " onclick="myFunction('1')" id="edit1" ></i>
+
+							</td>
+
+
+						</tr>
+						<tr id="row2">
+							<td id="id_row2">2021040002</td>
+							<td id="name_row2">Farhin Sultana</td>
+							<td id="gender_row2">Female</td>
+							<td id="phone_row2">01798412365</td>
+							<td id="address_row2">Uttara, Dhaka</td>
+
+							<td>
+								<i title="Delete" class="deleteData fa fa-trash fa-lg btn btn-outline-danger " data-target="#deleteModal" ></i> &emsp;
+
+								<i title="Edit" class="editData fa fa-edit fa-lg btn btn-outline-info " onclick="myFunction('2')" id="edit2" ></i>
+							</td>
+
+						</tr>
+						<tr id="row3">
+							<td id="id_row3">2021040003</td>
+							<td id="name_row3">Niloy Ahmed</td>
+							<td id="gender_row3">Male</td>
+							<td id="phone_row3">01987431486</td>
+							<td id="address_row3">Uttara, Dhaka</td>
+
+							<td>
+								<i title="Delete" class="deleteData fa fa-trash fa-lg btn btn-outline-danger " data-target="#deleteModal" ></i> &emsp;
+
+								<i title="Edit" class="editData fa fa-edit fa-lg btn btn-outline-info " onclick="myFunction('3')" id="edit3" ></i>
+							</td>
+						</tr>
+						<tr id="row4">
+							<td id="id_row4">2021040004</td>
+							<td id="name_row4">Sharmin Sultana</td>
+							<td id="gender_row4">Female</td>
+							<td id="phone_row4">01748531478</td>
+							<td id="address_row4">Tongi, Dhaka</td>
+
+							<td>
+								<i title="Delete" class="deleteData fa fa-trash fa-lg btn btn-outline-danger " data-target="#deleteModal" ></i> &emsp;
+
+								<i title="Edit" class="editData fa fa-edit fa-lg btn btn-outline-info " onclick="myFunction('4')" id="edit4"></i>
+							</td>
+						</tr>
+						<tr id="row5">
+							<td id="id_row5">2021040005</td>
+							<td id="name_row5">Bulbul Islam</td>
+							<td id="gender_row5">Male</td>
+							<td id="phone_row5">01674125896</td>
+							<td id="address_row5">Banani, Dhaka</td>
+
+							<td>
+								<i title="Delete" class="deleteData fa fa-trash fa-lg btn btn-outline-danger " data-target="#deleteModal"  ></i> &emsp;
+
+								<i title="Edit" class="editData fa fa-edit fa-lg btn btn-outline-info" onclick="myFunction('5')" id="edit5"></i>
+							</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Modal content-->
+	<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+			<div class="modal-content">
+				<div class="modal-header bg-info">
+					<h3 class="text-white">Edit Student</h3>
+					<span class="close text-white">&times;</span>
+
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-body">
+							<div class="row p-t-20">
+								<div class="col-md-12">
+									<div class="form-group row">
+										<label for="name" class="col-sm-4 control-label">Student ID:<span
+											class="text-danger">*</span></label>
+											<div class="col-sm-8">
+												<div class="controls">
+													<input type="text" maxlength="60" name="std_id" class="form-control" id="std_id"
+													required>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group row">
+											<label for="name" class="col-sm-4 control-label">Name:<span
+												class="text-danger">*</span></label>
+												<div class="col-sm-8">
+													<div class="controls">
+														<input type="text" maxlength="60" name="std_name" class="form-control" id="std_name"
+														required>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group row">
+												<label for="name" class="col-sm-4 control-label">Gender:<span
+													class="text-danger">*</span></label>
+													<div class="col-sm-8">
+														<div class="controls">
+															<input type="text" maxlength="60" name="gender" class="form-control" id="gender"
+															required>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group row">
+													<label for="name" class="col-sm-4 control-label">Mobile:<span
+														class="text-danger">*</span></label>
+														<div class="col-sm-8">
+															<div class="controls">
+																<input type="text" maxlength="60" name="mobile" class="form-control" id="mobile"
+																required>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group row">
+														<label for="name" class="col-sm-4 control-label">Address:<span
+															class="text-danger">*</span></label>
+															<div class="col-sm-8">
+																<div class="controls">
+																	<input type="text" maxlength="60" name="address" class="form-control" id="address"
+																	required>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<hr>
+												<div class="form-actions text-right">												
+													<button id="add_save_btn" type="submit" class="btn waves-effect waves-light btn-outline-info"
+													> Update </button>
+
+												</div>
+											</div>
+										</form>
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+
+
+
+
+
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+						<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+						<script type="text/javascript">
+
+							var modal = document.getElementById("myModal");
+							var span = document.getElementsByClassName("close")[0];
+
+							function myFunction(no)
+							{
+								var id=document.getElementById("id_row"+no).innerHTML;
+								var name=document.getElementById("name_row"+no).innerHTML;
+								var gender=document.getElementById("gender_row"+no).innerHTML;
+								var phone=document.getElementById("phone_row"+no).innerHTML;
+								var address=document.getElementById("address_row"+no).innerHTML;
+
+								modal.style.display = "block";
+								document.getElementById("std_id").value = id;
+								document.getElementById("std_name").value = name;
+								document.getElementById("gender").value = gender;
+								document.getElementById("mobile").value = phone;
+								document.getElementById("address").value = address;
+
+							}
+							span.onclick = function() {
+								modal.style.display = "none";
+							}
+
+							window.onclick = function(event) {
+								if (event.target == modal) {
+									modal.style.display = "none";
+								}
+							}
+						</script>
+
+					</body>
+					</html>
+
+
+
